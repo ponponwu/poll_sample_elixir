@@ -2,9 +2,11 @@ defmodule PollSample.Polls.Option do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias PollSample.Polls.Poll
+
   schema "options" do
     field :value, :string
-    field :poll_id, :id
+    belongs_to(:poll, Poll)
 
     timestamps()
   end
@@ -14,5 +16,6 @@ defmodule PollSample.Polls.Option do
     option
     |> cast(attrs, [:value])
     |> validate_required([:value])
+    |> assoc_constraint(:poll)
   end
 end
