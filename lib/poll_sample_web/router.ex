@@ -8,7 +8,9 @@ defmodule PollSampleWeb.Router do
   scope "/api", PollSampleWeb do
     pipe_through :api
 
-    resources "/polls", PollController, except: [:new, :edit]
+    resources "/polls", PollController, except: [:new, :edit] do
+      resources "/options", OptionController, except: [:new, :edit]
+    end
   end
 
   # Enables LiveDashboard only for development
