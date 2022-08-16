@@ -3,8 +3,8 @@ defmodule PollSample.Repo.Migrations.CreateOptions do
 
   def change do
     create table(:options) do
-      add :value, :string
-      add :poll_id, references(:polls, on_delete: :nothing)
+      add :value, :string, null: false
+      add :poll_id, references(:polls, on_delete: :delete_all), null: false
 
       timestamps()
     end
