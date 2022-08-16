@@ -11,8 +11,7 @@ defmodule PollSampleWeb.VoteController do
     render(conn, "index.json", votes: votes)
   end
 
-  def create(conn, %{"id" => id, "vote" => %{"option_id" => option_id}}) do
-    option = Polls.get_option!(option_id)
+  def create(conn, %{"vote" => vote_params}) do
     with {:ok, %Vote{} = vote} <- Polls.create_vote(vote_params) do
       conn
       |> put_status(:created)

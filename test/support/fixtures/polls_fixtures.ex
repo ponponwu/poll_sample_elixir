@@ -45,4 +45,18 @@ defmodule PollSample.PollsFixtures do
 
     vote
   end
+
+  @doc """
+  Generate a user.
+  """
+  def user_fixture(attrs \\ %{}) do
+    {:ok, user} =
+      attrs
+      |> Enum.into(%{
+        name: "some name"
+      })
+      |> PollSample.Polls.create_user()
+
+    user
+  end
 end
