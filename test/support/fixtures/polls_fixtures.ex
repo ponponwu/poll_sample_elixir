@@ -17,4 +17,18 @@ defmodule PollSample.PollsFixtures do
 
     poll
   end
+
+  @doc """
+  Generate a option.
+  """
+  def option_fixture(attrs \\ %{}) do
+    {:ok, option} =
+      attrs
+      |> Enum.into(%{
+        value: "some value"
+      })
+      |> PollSample.Polls.create_option()
+
+    option
+  end
 end
